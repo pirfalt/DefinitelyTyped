@@ -5,7 +5,7 @@
 
 declare module 'serialport' {
     class SerialPort {
-        constructor(path: string, options?: Object, openImmediately?: boolean, callback?: (err: string) => void)
+        constructor(path: string, options?: SerialPortOptions, openImmediately?: boolean, callback?: (err: string) => void)
         isOpen: boolean;
         on(event: string, callback?: (data?: any) => void): void;
         open(callback?: () => void): void;
@@ -46,6 +46,22 @@ declare module 'serialport' {
 
         interface updateOptions {
             baudRate?: number;
+        }
+        
+        interface SerialPortOptions {
+            autoOpen?: boolean
+            lock?: boolean
+            baudRate?: 115200 | 57600 | 38400 | 19200 | 9600 | 4800 | 2400 | 1800 | 1200 | 600 | 300 | 200 | 150 | 134 | 110 | 75 | 50
+            dataBits?: 8 | 7 | 6 | 5
+            stopBits?: 1 | 2
+            parity?: 'none' | 'even' | 'mark' | 'odd' | 'space'
+            rtscts?: boolean
+            xon?: boolean
+            xoff?: boolean
+            xany?: boolean
+            bufferSize?: number
+            parser?: (emitter: NodeJS.EventEmitter, buffer: Buffer) => void
+            platformOptions?: { vmin: number, vtimer: number }
         }
     }
 
