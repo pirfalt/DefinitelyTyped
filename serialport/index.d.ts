@@ -5,7 +5,7 @@
 
 declare module 'serialport' {
     class SerialPort {
-        constructor(path: string, options?: SerialPortOptions, openImmediately?: boolean, callback?: (err: string) => void)
+        constructor(path: string, options?: SerialPortOptions, callback?: (err: string) => void)
         isOpen: boolean;
         on(event: string, callback?: (data?: any) => void): void;
         open(callback?: () => void): void;
